@@ -1,0 +1,175 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(22, 105, 173);
+  background: linear-gradient(135deg, #42c5ff 0, #7f1fff 100%);
+  background-repeat: none;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  padding-top: 10vh;
+  background-attachment: fixed;
+  transition: all 0.25s ease-in-out;
+}
+
+body.push-down {
+  padding-top: 30vh;
+}
+.align-center {
+  text-align: center;
+}
+
+.reset-page {
+  
+}
+
+a {
+  color: #7f1fff;
+}
+
+a:hover,
+a:focus,
+a:active {
+  color: #420296;
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 1.25em;
+}
+
+h1, h2 {
+  color: #fff;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+h3 {
+  margin: 0 0 0.25em;
+}
+
+.form-control {
+  font-size: 1.5em;
+  width: 100%;
+  padding: 1em 0.75em 1em 1.75em;
+  border: 1px solid rgba(0,0,0,0.65);
+}
+
+.form-group__icon {
+  position: absolute;
+  font-size: 1.5em;
+  color: rgba(0,0,0,0.2);
+  left: 1.25em;
+  line-height: 2.25em;
+}
+
+.help-text {
+  display: none;
+}
+
+.panel {
+  text-align: left;
+  position: relative;
+  transition: all 0.4 ease-in-out;
+}
+
+.hide {
+  display: none;
+}
+
+p {
+  margin: 0;
+  color: rgba(0,0,0,0.5);
+}
+
+.panel-default {
+  padding: 0.5em;
+  border: 1px solid rgba(0,0,0,0.65);
+  position: relative;
+  top: 0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+}
+
+.panel-right {
+  text-align: right;
+}
+
+.search-results {
+  padding-top: 2em;
+}
+
+.panel-cta {
+  display: block;
+  line-height: 16px;
+}
+
+.panel-cta .material-icons {
+  display: inline-block;
+  font-size: 1em;
+  position: relative;
+  top: 0.25em;
+}
+
+.panel .col-xs-4 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.panel-default:hover {
+  background: #f8f8f8;
+  cursor: pointer;
+}
+
+.panel-default:hover a {
+  color: #420296;
+}
+
+.panel-default--selected,
+.panel-default--selected:hover {
+  transition: all 0.08s ease-in-out;
+  background: #fff;
+  box-shadow: inset 0 0 0 5px #75ffe3;
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  25% {
+    transform: scale3d(0.94, 0.94, 1);
+  }
+
+  35% {
+    transform: scale3d(1.04, 1.04, 1);
+  }
+
+  50% {
+    transform: scale3d(0.97, 0.97, 1);
+  }
+
+  65% {
+    transform: scale3d(1.02, 1.02, 1);
+  }
+
+  75% {
+    transform: scale3d(0.99, 0.99, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubber {
+  animation-name: rubberBand;
+  animation-duration: 0.7s;
+}
