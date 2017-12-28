@@ -4,7 +4,7 @@ html, body {
 
 body {
   background-color: rgb(22, 105, 173);
-  background: linear-gradient(0deg, #ffffff 0, #01539a 90%);
+  background: linear-gradient(to right, #649dcc -50%, #c2d6e7, #649dcc 150%);
   background-repeat: none;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
@@ -22,6 +22,12 @@ body.push-down {
 
 .reset-page {
 
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #606060;
+  opacity: 0.65;
 }
 
 a {
@@ -52,7 +58,8 @@ h1, h2 {
 
 h3 {
   margin: 0 0 0.25em;
-  color: #fff
+  color: #606060;
+  font-weight: normal;
 }
 
 .form-control {
@@ -60,11 +67,12 @@ h3 {
   width: 70%;
   padding: 1em 0.75em 1em 1.75em;
   border: 1px solid rgba(0,0,0,0.65);
-  border-radius: 15px 5px;
+  border-radius: 5px;
+  background-color: #dcf0ff
 }
 
 .form-control:focus {
-  border-radius: 15px 5px;
+  border-radius: 5px;
 }
 
 .form-group__icon {
@@ -77,6 +85,8 @@ h3 {
 
 .help-text {
   display: none;
+  text-align: left;
+  margin-left: 13%;
 }
 
 .panel {
@@ -100,6 +110,7 @@ p {
   margin: 1%;
   padding: 0.5em;
   border: 1px solid rgba(0,0,0,0);
+  background-color: #bdd2e5;
   position: relative;
   top: 0;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);

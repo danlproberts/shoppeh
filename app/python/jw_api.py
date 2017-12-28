@@ -30,4 +30,4 @@ def api_root():
     return jsonify(data)
 
 if __name__ == '__main__':
-    app.run(port="5000")
+    app.run(host="192.168.1.239", port="8080")

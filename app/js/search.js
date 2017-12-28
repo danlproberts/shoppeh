@@ -64,7 +64,7 @@ function searchPressed(e) {
   $('.help-text').show();
 
     //var host = 'https://donotpay-search-master.herokuapp.com';
-    var host = 'http://localhost:5000';
+    var host = 'http://192.168.1.239:8080';
     var url = host + "/search_api?query=" + search;
 
     // Query search api
