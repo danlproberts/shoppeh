@@ -1,6 +1,6 @@
 var searchDelay = 500;
-var resultDelay = 750;
-var resultIncrement = 250;
+var resultDelay = 500;
+var resultIncrement = 50;
 
 var userLocation = {};
 
@@ -62,7 +62,7 @@ function searchPressed(e) {
 
     //var host = 'https://donotpay-search-master.herokuapp.com';
     var host = 'http://localhost:5000';
-    var url = host;
+    var url = host + "/search_api?query=" + search;
 
     // Query search api
     $.get(url, function(res) {
@@ -71,11 +71,11 @@ function searchPressed(e) {
       var html = '';
       if( typeof res === 'object') {
         res.forEach(function(item) {
-          html += htmlFromResultItem(item.name, item.stock);
+          html += htmlFromResultItem(item.name, item.description, item.link);
         });
       }
 
-      results.html(html + helpResult + typeof res);
+      results.html(html + helpResult);
       results.children().each(function() {
         var me = $(this);
         setTimeout( function(){ animateIn( me ); }, resultDelay);
@@ -92,6 +92,7 @@ function htmlFromResultItem(name, description, link) {
     + '<div class="panel-body">'
     + '<h3>' + name + '</h3>'
     + '<p>' + description + '</p>'
+    + '<a href="' + link + '" target="_blank">Go To Site</a>'
     + '</div>'
     + '</div>'
     + '</div>'
