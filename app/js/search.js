@@ -72,9 +72,11 @@ function searchPressed(e) {
 
       // Present data
       var html = '';
+      var int = 0;
       if( typeof res === 'object') {
         res.forEach(function(item) {
-          html += htmlFromResultItem(item.name, item.des, item.img, item.link);
+          html += htmlFromResultItem(item.name, item.des, item.img, item.link, int.toString());
+          int += 1
         });
       }
 
@@ -87,9 +89,9 @@ function searchPressed(e) {
     });
   };
 
-function htmlFromResultItem(name, description, img, link) {
+function htmlFromResultItem(name, description, img, link, id) {
   return ''
-    + '<div class="panel panel-default animated flipInX hide anim-target rubberBand">'
+    + '<div id="tile' + id + '" class="panel panel-default animated flipInX hide anim-target rubberBand" onclick="clickontiles()">'
     + '<div class="row">'
     + '<div class="col-xs-8">'
     + '<div class="panel-body">'
@@ -106,3 +108,7 @@ function htmlFromResultItem(name, description, img, link) {
 function animateIn(panel) {
   panel.removeClass('hide');
 }
+
+$('#tile' + integer).click(function(){
+    window.location.href = "http://www.google.com";
+});
