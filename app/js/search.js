@@ -1,6 +1,6 @@
 var searchDelay = 500;
-var resultDelay = 500;
-var resultIncrement = 50;
+var resultDelay = 750;
+var resultIncrement = 250;
 
 var userLocation = {};
 
@@ -23,14 +23,14 @@ $(document).ready(function() {
   var helpResult =  htmlFromResultItem(
     '"Results will appear here!"',
     'Example example example.',
-    'www.gsk.com'
+    ''
   );
   var firstItem = `
     ${helpResult}
   `;
   var results = $('.search-results');
 
-  results.html(firstItem);
+  results.html('');
   results.children().each(function() {
     var me = $(this);
     animateIn( me );
@@ -44,11 +44,13 @@ function searchPressed(e) {
 
   var search = $('#main-search-form').val();
   var results = $('.search-results');
+  var helptxt = $('.help-text')
 
   // TODO: Change this info for help
   var helpResult = htmlFromResultItem(
     'Need extra help?',
     'We can help you within 24 hours.',
+    '',
     'mailto:support@donotpay.co.uk'
   );
   results.html('');
@@ -58,6 +60,7 @@ function searchPressed(e) {
 
   // Initial animation
   $('body').removeClass('push-down');
+  helptxt += '"' + search + '"'
   $('.help-text').show();
 
     //var host = 'https://donotpay-search-master.herokuapp.com';
@@ -71,7 +74,7 @@ function searchPressed(e) {
       var html = '';
       if( typeof res === 'object') {
         res.forEach(function(item) {
-          html += htmlFromResultItem(item.name, item.description, item.link);
+          html += htmlFromResultItem(item.name, item.des, item.img, item.link);
         });
       }
 
@@ -84,7 +87,7 @@ function searchPressed(e) {
     });
   };
 
-function htmlFromResultItem(name, description, link) {
+function htmlFromResultItem(name, description, img, link) {
   return ''
     + '<div class="panel panel-default animated flipInX hide anim-target rubberBand">'
     + '<div class="row">'
@@ -92,7 +95,8 @@ function htmlFromResultItem(name, description, link) {
     + '<div class="panel-body">'
     + '<h3>' + name + '</h3>'
     + '<p>' + description + '</p>'
-    + '<a href="' + link + '" target="_blank">Go To Site</a>'
+    + '<p><img vertical-align="middle" src="' + img + '" height="200"></img></p>'
+    + '<p><a href="' + link + '" target="_blank">Go To Site</a></p>'
     + '</div>'
     + '</div>'
     + '</div>'
