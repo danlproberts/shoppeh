@@ -2,8 +2,6 @@ var searchDelay = 500;
 var resultDelay = 750;
 var resultIncrement = 250;
 
-var userLocation = {};
-
 $(document).ready(function() {
 
   $('#search-form').submit(searchPressed);
@@ -76,8 +74,20 @@ function searchPressed(e) {
       var html = '';
       if( typeof res === 'object') {
         res.forEach(function(item) {
-          html += htmlFromResultItem(item.name, item.des, item.img, item.link);
+          if (typeof item === 'string') {
+
+            document.getElementById("search-count").innerHTML = item
+
+          } else {
+
+            html += htmlFromResultItem(item.name, item.des, item.img, item.link);
+
+          }
         });
+
+
+      //document.getElementById("search-count").innerHTML = ;
+
       }
 
       results.html(html);

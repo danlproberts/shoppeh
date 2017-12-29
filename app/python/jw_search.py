@@ -31,39 +31,68 @@ def searcher(search_term):
         
         return "Sorry!"
     
-    else:
-    
-        website = 'http://www.jackwills.com'
+    else:        
         
-        search_web = website + '/search?q='
+        count = 0
         
-        url = search_web + query(search_term)
+        i = 0
         
-        data = requests.get(url)
+        while i <= int(count):
         
-        #print (url)
-        
-        soup = BeautifulSoup(data.content, 'html.parser')
-        
-        html_list = soup.find_all('li', class_="grid-tile")
-        
-        for item in html_list:
-        
-            html_product = item.find('a', class_="name-link").text
+            website = 'http://www.jackwills.com'
             
-            html_product_href = item.find('a', class_="name-link").get('href')
+            search_web = website + '/search?q=' 
             
-            html_product_img = item.find('img').get('src')
+            url = search_web + query(search_term) + '&sz=48&start=' + str(i) + '&pmin=0&pmax=1000'
             
-            html_product_des = item.find('div', class_="visually-hidden gifthits-description").p.get_text()
+            data = requests.get(url)
             
-            item_dict = {}
-            item_dict["name"] = presentable(html_product)
-            item_dict["link"] = website + str(html_product_href)
-            item_dict["img"] = html_product_img
-            item_dict["des"] = html_product_des
+            soup = BeautifulSoup(data.content, 'html.parser')
             
-            result_list.append(item_dict)
+            html_count = soup.find('div', class_="search-results-count").get_text()
+            
+            #html_count = soup.find('div', class_="search-results-count").h1.get_text()
+            
+            count = html_count[html_count.find("(") + 1:html_count.find(")")].replace(",", "")
+            
+            
+            html_list = soup.find_all('li', class_="grid-tile")
+            
+            print (len(html_list))
+            
+            for item in html_list:
+                
+                item_dict = {}
+                
+                html_product = item.find('a', class_="name-link").text
+                
+                html_product_href = item.find('a', class_="name-link").get('href')
+                
+                html_product_img = item.find('img').get('src')
+                
+                try:
+                    html_product_des = item.find('div', class_="visually-hidden gifthits-description").p.get_text()
+                    
+                    item_dict["des"] = html_product_des
+                    
+                except AttributeError:
+                    
+                    pass
+                    
+                item_dict["name"] = presentable(html_product)
+                item_dict["link"] = website + str(html_product_href)
+                item_dict["img"] = html_product_img
+                
+                
+                result_list.append(item_dict)
+                
+            i += 48
+            
+        result_list.append(count)
+            
+        
+        
+        
     
    # for products in html_list:
         

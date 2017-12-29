@@ -8,6 +8,7 @@ Created on Fri Dec  1 16:31:29 2017
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import jw_search as jw
+import importlib
 
 app = Flask(__name__)
 CORS(app)
@@ -25,8 +26,6 @@ def api_root():
     
         result = jw.searcher(query)
         
-        print (result)
-        
         if result == []:
             
             data = [{'name': "Sorry, no results!"}]
@@ -36,6 +35,13 @@ def api_root():
             data = result
 
     return jsonify(data)
+
+@app.route('/reload')
+def reload():
+    
+    importlib.reload(jw)
+    
+    return "<h3>Modules reloaded!</h3>"
 
 if __name__ == '__main__':
     app.run(port="5000")
