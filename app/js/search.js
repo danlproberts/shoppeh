@@ -45,6 +45,7 @@ function searchPressed(e) {
   var helptxt = $('.help-text')
 
   document.getElementById("search-value").innerHTML = search
+  document.getElementById("search-count").innerHTML = ''
 
   // TODO: Change this info for help
   var helpResult = htmlFromResultItem(
