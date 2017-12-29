@@ -80,7 +80,7 @@ function searchPressed(e) {
         });
       }
 
-      results.html(html + helpResult);
+      results.html(html);
       results.children().each(function() {
         var me = $(this);
         setTimeout( function(){ animateIn( me ); }, resultDelay);

@@ -71,6 +71,4 @@ def searcher(search_term):
     
     #print ("Update! " + str(datetime.fromtimestamp(time.mktime(time.gmtime()))))
     
-    print (result_list[0])
-    
     return result_list

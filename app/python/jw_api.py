@@ -19,13 +19,21 @@ def api_root():
 
     if query == "":
         
-        data = [{'name': "Sorry, please enter a search term!"}]
+        data = [{'name': "Please enter a search term!"}]
 
     else:
     
         result = jw.searcher(query)
-    
-        data = result
+        
+        print (result)
+        
+        if result == []:
+            
+            data = [{'name': "Sorry, no results!"}]
+        
+        else:
+        
+            data = result
 
     return jsonify(data)
 
