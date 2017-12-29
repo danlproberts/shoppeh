@@ -90,14 +90,28 @@ function searchPressed(e) {
   };
 
 function htmlFromResultItem(name, description, img, link) {
+
+  var desvalue = '<p class="des">' + description + '</p>'
+  var imgvalue = '<p class="image"><img src="' + img + '" height="200"></img></p>'
+  var linkvalue = '<a href="' + link + '" target="_blank"><div class="row">'
+
+  if (description === undefined) {
+    var desvalue = ""
+  }
+  if (link === undefined) {
+    var linkvalue = ""
+  }
+  if (img === undefined) {
+    var imgvalue = ""
+  }
   return ''
     + '<div class="panel panel-default animated hide anim-target fadeIn">'
-    + '<a href="' + link + '" target="_blank"><div class="row">'
+    + linkvalue
     + '<div class="col-xs-8">'
     + '<div class="panel-body">'
     + '<h3>' + name + '</h3>'
-    + '<p class="des">' + description + '</p>'
-    + '<p class="image"><img src="' + img + '" height="200"></img></p>'
+    + desvalue
+    + imgvalue
     + '</div>'
     + '</div>'
     + '</div></a>'
