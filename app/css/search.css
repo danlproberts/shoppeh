@@ -1,16 +1,21 @@
 html, body {
-  height: 100%;
+  height: 93%;
 }
 
 body {
-  background-color: rgb(22, 105, 173);
-  background: linear-gradient(to right, #649dcc -50%, #c2d6e7, #649dcc 150%);
+  background-color: #FFF;
   background-repeat: none;
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
   padding-top: 10vh;
   background-attachment: fixed;
   transition: all 0.25s ease-in-out;
+  margin: 0;
+}
+
+input {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #606060;
 }
 
 body.push-down {
@@ -31,13 +36,12 @@ body.push-down {
 }
 
 a {
-  color: #7f1fff;
+  text-decoration: none;
 }
 
 a:hover,
 a:focus,
 a:active {
-  color: #7f1fff;
   text-decoration: none;
 }
 
@@ -47,11 +51,11 @@ h1 {
 }
 
 h2 {
-  font-size: 1.25em;
+  font-size: 1.5em;
 }
 
 h1, h2 {
-  color: #fff;
+  color: #606060;
   margin-bottom: 1em;
   text-align: center;
 }
@@ -60,6 +64,7 @@ h3 {
   margin: 0 0 0.25em;
   color: #606060;
   font-weight: normal;
+  font-size: 1.5em
 }
 
 .form-control {
@@ -107,20 +112,24 @@ p {
 .panel-default {
   float: left;
   width: 48%;
-  margin: 1%;
+  margin: 0 1% 2% 1%;
   padding: 0.5em;
   border: 1px solid rgba(0,0,0,0);
   background-color: #bdd2e5;
   position: relative;
   top: 0;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
-  text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.search-results::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .panel-right {
@@ -129,14 +138,13 @@ p {
 
 .search-results {
   padding-top: 2em;
-  padding-left: 5em;
-  padding-right: 5em
-}
-
-.search-results::after {
-  content: "";
-  display: table;
-  clear: both;
+  padding-left: 12%;
+  padding-right: 12%;
+  height: 41em;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.13);
 }
 
 .panel-cta {
@@ -175,7 +183,15 @@ p {
 }
 
 .image {
-  align = middle;
+  text-align: center;
+  padding: 1em;
+}
+
+.des {
+  line-height: 1em;
+  height: 2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @keyframes rubberBand {
@@ -208,7 +224,44 @@ p {
   }
 }
 
+@keyframes fadeanim {
+
+  from {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 25%;
+  }
+
+  35% {
+    opacity: 35%;
+  }
+
+  50% {
+    opacity: 50%;
+  }
+
+  65% {
+    opacity: 65%;
+  }
+
+  75% {
+    opacity: 75%;
+  }
+
+  to {
+    opacity: 100%;
+  }
+
+}
+
 .rubber {
   animation-name: rubberBand;
   animation-duration: 0.7s;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: 0.7s
 }

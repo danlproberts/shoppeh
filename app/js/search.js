@@ -46,12 +46,14 @@ function searchPressed(e) {
   var results = $('.search-results');
   var helptxt = $('.help-text')
 
+  document.getElementById("search-value").innerHTML = search
+
   // TODO: Change this info for help
   var helpResult = htmlFromResultItem(
     'Need extra help?',
     'We can help you within 24 hours.',
     '',
-    'mailto:support@donotpay.co.uk'
+    ''
   );
   results.html('');
 
@@ -63,8 +65,8 @@ function searchPressed(e) {
   helptxt += '"' + search + '"'
   $('.help-text').show();
 
-    //var host = 'https://donotpay-search-master.herokuapp.com';
-    var host = 'http://192.168.1.239:8080';
+    var host = 'http://localhost:5000';
+    //var host = 'http://192.168.1.239:8080';
     var url = host + "/search_api?query=" + search;
 
     // Query search api
@@ -72,11 +74,9 @@ function searchPressed(e) {
 
       // Present data
       var html = '';
-      var int = 0;
       if( typeof res === 'object') {
         res.forEach(function(item) {
-          html += htmlFromResultItem(item.name, item.des, item.img, item.link, int.toString());
-          int += 1
+          html += htmlFromResultItem(item.name, item.des, item.img, item.link);
         });
       }
 
@@ -89,26 +89,21 @@ function searchPressed(e) {
     });
   };
 
-function htmlFromResultItem(name, description, img, link, id) {
+function htmlFromResultItem(name, description, img, link) {
   return ''
-    + '<div id="tile' + id + '" class="panel panel-default animated flipInX hide anim-target rubberBand" onclick="clickontiles()">'
-    + '<div class="row">'
+    + '<div class="panel panel-default animated hide anim-target fadeIn">'
+    + '<a href="' + link + '" target="_blank"><div class="row">'
     + '<div class="col-xs-8">'
     + '<div class="panel-body">'
     + '<h3>' + name + '</h3>'
-    + '<p>' + description + '</p>'
-    + '<p><img vertical-align="middle" src="' + img + '" height="200"></img></p>'
-    + '<p><a href="' + link + '" target="_blank">Go To Site</a></p>'
+    + '<p class="des">' + description + '</p>'
+    + '<p class="image"><img src="' + img + '" height="200"></img></p>'
     + '</div>'
     + '</div>'
-    + '</div>'
+    + '</div></a>'
     + '</div>'
 }
 
 function animateIn(panel) {
   panel.removeClass('hide');
 }
-
-$('#tile' + integer).click(function(){
-    window.location.href = "http://www.google.com";
-});

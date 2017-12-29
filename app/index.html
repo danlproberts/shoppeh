@@ -17,15 +17,16 @@
 <body>
 <form id="search-form">
             <div class="form-group">
-              <i class="form-group__icon material-icons">search</i>
+              <span><i class="form-group__icon material-icons">search</i></span>
               <input type="text" class="form-control" id="main-search-form" placeholder="Enter your search query here" autocomplete="off">
           </div>
           </form>
+
         <!--   SEARCH RESULTS   -->
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
           <br />
-          <h2 class="help-text animated fadeIn">Your results:</h2>
+          <h2 class="help-text animated fadeIn">Your results for "<span id="search-value"></span>":</h2>
 
           <div class="search-results"></div>
         </div>
