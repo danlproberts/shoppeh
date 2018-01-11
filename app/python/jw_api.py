@@ -8,6 +8,7 @@ Created on Fri Dec  1 16:31:29 2017
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import jw_search as jw
+import hm_search as hm
 import importlib
 
 app = Flask(__name__)
@@ -24,7 +25,17 @@ def api_root():
 
     else:
     
-        result = jw.searcher(query)
+        jw_result = jw.searcher(query)
+        hm_result = hm.searcher(query)
+        
+        jw_count = jw_result.pop(-1)
+        hm_count = hm_result.pop(-1)
+        
+        count = int(jw_count) + int(hm_count)
+        
+        result = jw_result + hm_result
+        
+        result.append(str(count))
         
         if result == []:
             
@@ -40,6 +51,7 @@ def api_root():
 def reload():
     
     importlib.reload(jw)
+    importlib.reload(hm)
     
     return "<h3>Modules reloaded!</h3>"
 

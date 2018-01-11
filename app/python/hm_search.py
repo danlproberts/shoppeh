@@ -39,9 +39,9 @@ def searcher(search_term):
         
         while i <= int(count):
         
-            website = 'https://www2.hm.com/en_gb/'
+            website = 'https://www2.hm.com'
             
-            search_web = website + '/search-results.html?q=' 
+            search_web = website + '/en_gb/search-results.html?q=' 
             
             url = search_web + query(search_term) + '&sort=stock&offset=0&page-size=' + str(i)
             
@@ -55,11 +55,9 @@ def searcher(search_term):
             
             #count = html_count[html_count.find("(") + 1:html_count.find(")")].replace(",", "")
             
-            print (count)
             
             html_list = soup.find_all('div', class_="grid col-3")
             
-            print (len(html_list))
             
             for item in html_list:
                 
@@ -74,7 +72,7 @@ def searcher(search_term):
                     
                 item_dict["name"] = presentable(html_product)
                 item_dict["link"] = website + str(html_product_href)
-                item_dict["img"] = html_product_img
+                item_dict["img"] = "http:" + html_product_img
                 
                 
                 result_list.append(item_dict)
@@ -83,7 +81,7 @@ def searcher(search_term):
             
         result_list.append(count)
         
-        print (result_list)
+        print ("HM - " + count)
             
         
         
@@ -96,5 +94,3 @@ def searcher(search_term):
     #print ("Update! " + str(datetime.fromtimestamp(time.mktime(time.gmtime()))))
     
     return result_list
-
-searcher('clothes')

@@ -58,8 +58,6 @@ def searcher(search_term):
             
             html_list = soup.find_all('li', class_="grid-tile")
             
-            print (len(html_list))
-            
             for item in html_list:
                 
                 item_dict = {}
@@ -89,6 +87,8 @@ def searcher(search_term):
             i += 48
             
         result_list.append(count)
+        
+        print ("JW - " + count)
             
         
         
