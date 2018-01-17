@@ -80,13 +80,14 @@ def searcher(search_term):
                 item_dict["name"] = presentable(html_product)
                 item_dict["link"] = website + str(html_product_href)
                 item_dict["img"] = html_product_img
+                item_dict["retailer"] = "JW"
                 
                 
                 result_list.append(item_dict)
                 
             i += 48
             
-        result_list.append(count)
+        result_list.append({"searchcount": count})
         
         print ("JW - " + count)
             

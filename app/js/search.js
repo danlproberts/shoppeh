@@ -16,7 +16,7 @@ $(document).ready(function() {
     // }, 600, "linear");
   });
   });
-  // var results = $('.search-results');
+   var results = $('.search-results');
 
   var helpResult =  htmlFromResultItem(
     '"Results will appear here!"',
@@ -81,7 +81,7 @@ function searchPressed(e) {
 
           } else {
 
-            html += htmlFromResultItem(item.name, item.des, item.img, item.link);
+            html += htmlFromResultItem(item.name, item.des, item.img, item.link, item.retailer);
 
           }
         });
@@ -100,7 +100,7 @@ function searchPressed(e) {
     });
   };
 
-function htmlFromResultItem(name, description, img, link) {
+function htmlFromResultItem(name, description, img, link, retailer) {
 
   var desvalue = '<p class="des">' + description + '</p>'
   var imgvalue = '<p class="image"><img src="' + img + '" height="200"></img></p>'
@@ -115,8 +115,16 @@ function htmlFromResultItem(name, description, img, link) {
   if (img === undefined) {
     var imgvalue = ""
   }
+
+  if (retailer === "JW") {
+    var retailer = "jwstyle ";
+
+  } else if (retailer === "HM") {
+      var retailer = "hmstyle ";
+    }
+
   return ''
-    + '<div class="panel panel-default animated hide anim-target fadeIn">'
+    + '<div class="panel panel-default animated hide anim-target ' + retailer + 'fadeIn">'
     + linkvalue
     + '<div class="col-xs-8">'
     + '<div class="panel-body">'

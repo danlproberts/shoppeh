@@ -124,6 +124,7 @@ p {
   -moz-box-sizing: border-box;
   -ms-box-sizing: border-box;
   box-sizing: border-box;
+  height: 49%;
 }
 
 .search-results::after {
@@ -145,6 +146,22 @@ p {
   overflow-x: hidden;
   overflow-y: auto;
   box-shadow: inset 0px 5px 5px 0px rgba(0, 0, 0, 0.13);
+}
+
+.jwstyle {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-image: url('../img/jw_logo.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hmstyle {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-image: url('../img/hm_logo.jpg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .panel-cta {

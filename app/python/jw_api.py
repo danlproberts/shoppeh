@@ -31,9 +31,11 @@ def api_root():
         jw_count = jw_result.pop(-1)
         hm_count = hm_result.pop(-1)
         
-        count = int(jw_count) + int(hm_count)
+        count = int(jw_count["searchcount"]) + int(hm_count["searchcount"])
         
         result = jw_result + hm_result
+        
+        print (count)
         
         result.append(str(count))
         
