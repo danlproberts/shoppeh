@@ -5,8 +5,12 @@ const app = express();
 const router = express.Router();
 const port = 8080;
 
+var PythonShell = require('python-shell');
+
 //Setting up main python script
 var retailscraper = 'retail_hub.py'
+var pyshell = new PythonShell(retailscraper);
+
 
 //Top-level Path
 app.get('/', (request, response) => response.send('Welcome to the Shoppeh API'));
@@ -19,6 +23,23 @@ app.use('/search', router);
 
 //Prefixing Path
 router.get('/', (request, response) => {
+
+  var urlParts = url.parse(request.url, true);
+  var parameters = urlParts.query;
+  var searchquery = parameters.search;
+
+  pyshell.on('Activating python scrapers...', function (message) {
+
+    console.log(message);
+
+  )};
+
+  pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+
+    console.log('Done');
 
 });
 
