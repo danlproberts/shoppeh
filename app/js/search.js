@@ -64,7 +64,7 @@ function searchPressed(e) {
   helptxt += '"' + search + '"'
   $('.help-text').show();
 
-    var host = 'http://localhost:5000';
+    var host = 'http://localhost:8080';
     //var host = 'http://192.168.1.239:8080';
     var url = host + "/search_api?query=" + search;
 
